@@ -1,4 +1,4 @@
-# 🧬 Protein Visualizer
+# 🧬 Protein Visualizer (https://proteinview.streamlit.app/)
 
 An interactive web application for visualizing and analyzing protein structures in PDB format. Built with Streamlit and py3Dmol for 3D molecular visualization.
 
@@ -25,10 +25,6 @@ An interactive web application for visualizing and analyzing protein structures 
   - Ligand detection
   - Water molecule count
 - 🖱️ **Interactive Controls**: Rotate, zoom, and explore your protein structure in 3D
-
-## 🚀 Demo
-
-Try the live demo: [Protein Visualizer on Streamlit Cloud]([[https://proteinvisualizer.streamlit.app](https://proteinview.streamlit.app/)][(https://proteinview.streamlit.app/](https://proteinview.streamlit.app/)))
 
 ### Local Setup
 
