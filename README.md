@@ -28,7 +28,7 @@ An interactive web application for visualizing and analyzing protein structures 
 
 ## 🚀 Demo
 
-Try the live demo: [Protein Visualizer on Streamlit Cloud](https://proteinvisualizer.streamlit.app)
+Try the live demo: [Protein Visualizer on Streamlit Cloud]([[https://proteinvisualizer.streamlit.app](https://proteinview.streamlit.app/)][(https://proteinview.streamlit.app/](https://proteinview.streamlit.app/)))
 
 ### Local Setup
 
