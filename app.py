@@ -3,6 +3,11 @@ import py3Dmol
 from Bio.PDB import PDBParser
 from io import StringIO
 
+def load_example(path):
+    with open(path, "r") as f:
+        return f.read()
+    
+
 def view_function(file_content, style="cartoon", color_scheme="chain"):
     viewer = py3Dmol.view(width=800, height=600)
     viewer.addModel(file_content, "pdb")
@@ -63,6 +68,12 @@ def get_basic_stats(pdb_content: str):
         "models": len(structure)
     }
 
+st.set_page_config(
+    page_title="Protein Visualizer",
+    page_icon="🧬",
+    layout="centered"
+)
+
 color_options = [
     "chain",
     "ssPyMol",
@@ -80,14 +91,46 @@ style_options = [
     "surface"
 ]
 
-st.title("Protein Visualizer")
-st.header("Upload a Protein Structure File")
+# Styling
+st.markdown("""<style>
+    .title-gradient {            
+        background: radial-gradient(circle, #ff6b6b 0%, #feca57 33%, #48dbfb 66%, #1dd1a1 100%);
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-fill-color: transparent;
+        font-size: 42px;
+        font-weight: 900;
+        font-family: Arial, sans-serif;
+      
+    }
+    """, unsafe_allow_html=True)
+#  End styling
+
+st.html(
+    "<h1 class='title-gradient'>Protein Structure Visualizer</h1>"
+    "<br><br>"
+)
 st.info("Supported formats: PDB")
 
 uploaded_file = st.file_uploader("Choose a PDB file", type=["pdb"])
+if st.button("Load an example structure (1BNA)"):
+    try:
+        file_content = load_example("1BNA.pdb")
+        st.session_state.example_loaded = True
+        st.session_state.file_content = file_content
+    except FileNotFoundError:
+        st.error("File 1BNA.pdb not found.")
 
+
+file_content = None
 if uploaded_file is not None:
     file_content = uploaded_file.read().decode("utf-8")
+elif "file_content" in st.session_state and st.session_state.get("example_loaded"):
+    file_content = st.session_state.file_content
+
+if file_content is not None:
 
     selected_style = st.selectbox("Select visualization style", style_options)
     selected_color = st.selectbox("Select color scheme", color_options)
