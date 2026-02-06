@@ -7,9 +7,8 @@ def load_example(path):
     with open(path, "r") as f:
         return f.read()
     
-
 def view_function(file_content, style="cartoon", color_scheme="chain"):
-    viewer = py3Dmol.view(width=800, height=600)
+    viewer = py3Dmol.view(height=550)
     viewer.addModel(file_content, "pdb")
 
     if style == "cartoon":
